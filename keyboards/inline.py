@@ -27,9 +27,11 @@ def create_sending_channel_keyboard(selected_channels=None):
     keyboard = []
     for channel in predefined_channels:
         if channel['id'] in selected_channels:
-            keyboard.append([InlineKeyboardButton(text=f"✅  {channel['name']}", callback_data=f'sending:{channel['id']}')])
+            keyboard.append([InlineKeyboardButton(text="✅  {}".format(channel['name']),
+                                                  callback_data='sending:{}'.format(channel['id']))])
         else:
-            keyboard.append([InlineKeyboardButton(text=f"🔘  {channel['name']}", callback_data=f'sending:{channel['id']}')])
+            keyboard.append([InlineKeyboardButton(text="🔘  {}".format(channel['name']),
+                                                  callback_data='sending:{}'.format(channel['id']))])
     keyboard.append([InlineKeyboardButton(text=COPLETE_CHANNEL_SELECT_TEXT, callback_data="sending-complete")])
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
