@@ -12,9 +12,11 @@ def create_channel_keyboard(selected_channels=None):
     keyboard = []
     for channel in predefined_channels:
         if channel['id'] in selected_channels:
-            keyboard.append([InlineKeyboardButton(text=f"✅  {channel['name']}", callback_data=f'channel:{channel['id']}')])
+            keyboard.append([InlineKeyboardButton(text="✅  {}".format(channel['name']),
+                                                  callback_data='channel:{}'.format(channel['id']))])
         else:
-            keyboard.append([InlineKeyboardButton(text=f"🔘  {channel['name']}", callback_data=f'channel:{channel['id']}')])
+            keyboard.append([InlineKeyboardButton(text="🔘  {}".format(channel['name']),
+                                                  callback_data='channel:{}'.format(channel['id']))])
     keyboard.append([InlineKeyboardButton(text=COPLETE_CHANNEL_SELECT_TEXT, callback_data="channel-complete")])
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
